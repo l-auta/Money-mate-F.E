@@ -13,14 +13,12 @@ const SignUp = () => {
 
   const handleSubmit = () => {
     // e.preventDefault()
-    console.log('Form Submitted with Username: ', username);
-    console.log('Form Submitted with Email: ', email);
-    console.log('Form Submitted with Password: ', password);
+    
     if(username === "" || email === "" || password === ""){
         alert('Please fill in all fields');
         return;
     }
-    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email))){
         alert('Please enter a valid email address');
         return;
     }
@@ -32,7 +30,9 @@ const SignUp = () => {
         alert('Passwords do not match');
         return;
     }
-    alert('Form Submitted Successfully');
+    console.log('Form Submitted with Username: ', username);
+    console.log('Form Submitted with Email: ', email);
+    console.log('Form Submitted with Password: ', password);
     
 // clear inputs after submission
     setUsername('');
