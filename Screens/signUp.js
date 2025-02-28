@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View,  Text, StyleSheet, ScrollView } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput , Icon, MD3Colors} from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../Components/customBtn';
 
@@ -26,7 +26,10 @@ const SignUp = () => {
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView>
-    <Text style={styles.welcome}>SIGN-UP TO CONTINUE</Text>
+    <View>
+        <Text style={styles.welcomeText}>SIGN-UP</Text>
+        <Text style={styles.subWelcomeText}>TO CONTINUE</Text>
+    </View>
     <View style={styles.form}>
       <Text style={styles.title}>User Name</Text>
         <TextInput
@@ -161,6 +164,19 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     margin : 5         
   },
+  welcomeText: {
+    fontSize: 55,
+    color: '#6d2323',
+    fontWeight : 'bold',
+    // marginTop: 70,
+},
+subWelcomeText: {
+    fontSize: 35,
+    marginBottom: 20,
+    marginLeft : 30,
+    color: '#a04747',
+    fontWeight : 'bold',
+},
   
   welcome: {
     fontSize: 35,
