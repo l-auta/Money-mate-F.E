@@ -10,8 +10,13 @@ const LogIn = () => {
   const [password, setPassword] = useState('');
   
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit =  () => {
+    // e.preventDefault();
+    // Basic validation for empty fields
+    if (!username || !password) {
+        alert('Please fill in both fields');
+        return;
+      }
     
      // Make API request to backend to verify login credentials
     //  try {
@@ -62,9 +67,6 @@ const LogIn = () => {
         onChangeText={setUsername}
         value={username}
         mode='flat'
-        labelStyle={{
-            color: 'purple',  // Changes the label color
-          }}
         contentStyle={{
             paddingLeft: 10,  // Adds padding to the left of the input field
             backgroundColor: '#ffefd0',  // Changes the background color of the text input area
@@ -88,9 +90,6 @@ const LogIn = () => {
         value={password}
         secureTextEntry={true}
         mode='flat'
-        labelStyle={{
-            color: 'purple',  // Changes the label color
-          }}
         contentStyle={{
             paddingLeft: 10,  // Adds padding to the left of the input field
             backgroundColor: '#ffefd0',  // Changes the background color of the text input area
@@ -121,28 +120,16 @@ const styles = StyleSheet.create({
     paddingTop : 70,
   },
   form: {
-    marginBottom: 50,
-  },
-  register: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  line: {
-    width: '98%',                // Full width of the container
-    height: 1,                    // Height of the line
-    backgroundColor: 'black',     // Line color
-    marginVertical: 20,
-    margin : 5         
+    marginBottom: 90,
   },
   welcomeText: {
     fontSize: 55,
     color: '#6d2323',
     fontWeight : 'bold',
-    // marginTop: 70,
 },
 subWelcomeText: {
     fontSize: 35,
-    marginBottom: 20,
+    marginBottom: 60,
     marginLeft : 30,
     color: '#a04747',
     fontWeight : 'bold',
@@ -157,29 +144,12 @@ subWelcomeText: {
   },
   title: {
     marginBottom: 5,
-    marginTop: 20,
+    marginTop: 40,
     fontSize: 19,
     marginLeft : 0,
     fontWeight : 'bold',
   },
-//   input: {
-//     height: 40,
-//     backgroundColor: '#e5e5bf',
-//     borderRadius:10,
-//     marginBottom: 20,
-//     width: '100%',
-//     padding: 10, 
-//   },
-  normalText:{
-    color: 'black',
-    fontSize: 19,
-  },
-  link: {
-    color: '#6d2323',
-    fontWeight: 'bold',
-    fontSize: 19,
-    textDecorationLine: 'underline',
-  },
+  
 });
 
 export default LogIn;
