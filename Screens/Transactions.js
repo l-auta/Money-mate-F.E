@@ -6,7 +6,7 @@ function Transactions() {
     return (
         <SafeAreaView>
         <View style={styles.container}>
-            <Text style={styles.welcome}>transaction Screen</Text>
+            <Text style={styles.welcome}>Transaction Screen</Text>
         </View>
         </SafeAreaView>
     );
