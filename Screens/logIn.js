@@ -7,57 +7,54 @@ import Button from '../Components/customBtn';
 
 const LogIn = () => {
   const [username,  setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  
 
-  const handleSubmit = () => {
-    // e.preventDefault()
-    // getting info to the backend
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ username, email, password1, password2 }),
-    // };
-    // fetch("https://phase-4-project-3-o2io.onrender.com/signup", requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))  // You can handle the response here
-    //     .catch(error => window.alert('Error:', error));  // Handle any errors
-
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     
-    if(username === "" || email === "" || password === ""){
-        alert('Please fill in all fields');
-        return;
-    }
-    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email))){
-        alert('Please enter a valid email address');
-        return;
-    }
-    if(password.length<8){
-        alert('Password must be at least 8 characters long');
-        return;
-    }
-    if(password!==confirmPassword){
-        alert('Passwords do not match');
-        return;
-    }
+     // Make API request to backend to verify login credentials
+    //  try {
+    //     const response = await fetch('https://phase-4-project-3-o2io.onrender.com/login', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ email, password }),
+    //       credentials: 'include',
+    //     });
+  
+    //     const data = await response.json();
+        
+    //     if (response.ok) {
+    //       // Login was successful
+    //       onLoginSuccess(); // Pass success message or trigger route change
+    //       // fetchNotes()
+    //     } else {
+    //       // Show error message if login failed
+    //       setError(data.message || 'Login failed. Please try again.');
+    //     }
+    //   } catch (error) {
+    //     setError('An error occurred. Please try again later.');
+    //   }
+    // };
+    
+    
     console.log('Form Submitted with Username: ', username);
-    console.log('Form Submitted with Email: ', email);
     console.log('Form Submitted with Password: ', password);
     
 // clear inputs after submission
     setUsername('');
-    setEmail('');
     setPassword('');
-    setConfirmPassword('');
+    
   };
 
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView>
     <View>
-        <Text style={styles.welcomeText}>SIGN-UP</Text>
-        <Text style={styles.subWelcomeText}>TO CONTINUE</Text>
+        <Text style={styles.welcomeText}>LOG IN</Text>
+        <Text style={styles.subWelcomeText}>TO YOUR ACCOUNT</Text>
     </View>
     <View style={styles.form}>
       <Text style={styles.title}>User Name</Text>
@@ -84,29 +81,7 @@ const LogIn = () => {
             height: 50,  // Sets the height of the text input area
           }}
         />
-      <Text style={styles.title}>Email</Text>
-        <TextInput
-        onChangeText={setEmail}
-        value={email}mode='flat'
-        labelStyle={{
-            color: 'purple',  // Changes the label color
-          }}
-        contentStyle={{
-            paddingLeft: 10,  // Adds padding to the left of the input field
-            backgroundColor: '#ffefd0',  // Changes the background color of the text input area
-          }}
-          underlineStyle={{
-            // borderBottomWidth: 2,  // Adjusts the thickness of the underline
-            borderBottomColor: '#6d2323',  // Changes the color of the underline
-            borderRadius: 5,  // Adds border radius to the bottom of the input
-          }}
-          activeUnderlineColor='#6d2323'
-          style={{
-            // margin: 5,  // This applies to the outer wrapper of the input
-            borderRadius: 50,  // Border radius for the outer container
-            height: 50,  // Sets the height of the text input area
-          }}
-        />
+      
       <Text style={styles.title}>Password</Text>
         <TextInput
         onChangeText={setPassword}
@@ -132,42 +107,8 @@ const LogIn = () => {
             height: 50,  // Sets the height of the text input area
           }}
         />
-      <Text style={styles.title}>Confirm Password</Text>
-        <TextInput
-        onChangeText={setConfirmPassword}
-        value={confirmPassword}
-        secureTextEntry={true}
-        mode='flat'
-        labelStyle={{
-            color: 'purple',  // Changes the label color
-          }}
-        contentStyle={{
-            paddingLeft: 10,  // Adds padding to the left of the input field
-            backgroundColor: '#ffefd0',  // Changes the background color of the text input area
-          }}
-          underlineStyle={{
-            // borderBottomWidth: 2,  // Adjusts the thickness of the underline
-            borderBottomColor: '#6d2323',  // Changes the color of the underline
-            borderRadius: 5,  // Adds border radius to the bottom of the input
-          }}
-          activeUnderlineColor='#6d2323'
-          style={{
-            // margin: 5,  // This applies to the outer wrapper of the input
-            borderRadius: 50,  // Border radius for the outer container
-            height: 50,  // Sets the height of the text input area
-          }}
-        />
         </View>
-        <Button style={styles.button} title="Sign-Up" onPress={handleSubmit} />
-        <View style={styles.line} />
-        <View style = {styles.register}>
-            <Text style={styles.normalText}>
-                Already registered?{' '}
-                <Text style={styles.link} onPress={() => console.log('Sign In')}>
-                Log-in  
-                </Text>
-            </Text>
-        </View>
+        <Button style={styles.button} title="Log-In" onPress={handleSubmit} />
       </ScrollView>
       </SafeAreaView>
   );
