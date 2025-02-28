@@ -13,6 +13,17 @@ const SignUp = () => {
 
   const handleSubmit = () => {
     // e.preventDefault()
+    // getting info to the backend
+    // const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ username, email, password1, password2 }),
+    // };
+    // fetch("https://phase-4-project-3-o2io.onrender.com/signup", requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))  // You can handle the response here
+    //     .catch(error => window.alert('Error:', error));  // Handle any errors
+
     
     if(username === "" || email === "" || password === ""){
         alert('Please fill in all fields');
