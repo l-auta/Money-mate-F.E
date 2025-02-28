@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View,  Text, StyleSheet, ScrollView } from 'react-native';
-import { TextInput , Icon, MD3Colors} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../Components/customBtn';
 
@@ -164,7 +164,7 @@ const SignUp = () => {
             <Text style={styles.normalText}>
                 Already registered?{' '}
                 <Text style={styles.link} onPress={() => console.log('Sign In')}>
-                Sign-In 
+                Log-in  
                 </Text>
             </Text>
         </View>
