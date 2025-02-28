@@ -16,11 +16,29 @@ const SignUp = () => {
     console.log('Form Submitted with Username: ', username);
     console.log('Form Submitted with Email: ', email);
     console.log('Form Submitted with Password: ', password);
+    if(username === "" || email === "" || password === ""){
+        alert('Please fill in all fields');
+        return;
+    }
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+        alert('Please enter a valid email address');
+        return;
+    }
+    if(password.length<8){
+        alert('Password must be at least 8 characters long');
+        return;
+    }
+    if(password!==confirmPassword){
+        alert('Passwords do not match');
+        return;
+    }
+    alert('Form Submitted Successfully');
     
 // clear inputs after submission
     setUsername('');
     setEmail('');
     setPassword('');
+    setConfirmPassword('');
   };
 
   return (
@@ -133,7 +151,7 @@ const SignUp = () => {
         <View style={styles.line} />
         <View style = {styles.register}>
             <Text style={styles.normalText}>
-                Have you registered?{' '}
+                Already registered?{' '}
                 <Text style={styles.link} onPress={() => console.log('Sign In')}>
                 Sign-In 
                 </Text>
