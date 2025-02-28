@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../Components/customBtn';
 
 
-const LogIn = () => {
+const LogIn = ({navigation}) => {
   const [username,  setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -17,6 +17,8 @@ const LogIn = () => {
         alert('Please fill in both fields');
         return;
       }
+
+      navigation.replace('Main');  // Navigate to the main screen after login
     
      // Make API request to backend to verify login credentials
     //  try {

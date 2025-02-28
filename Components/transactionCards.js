@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
 // Simulate receiving new transactions
@@ -33,16 +33,19 @@ const TransactionCards = () => {
   }, []);
 
   return (
-    <View style={{ padding: 20 }}>
-      <Card style={{ marginBottom: 20, padding: 20 }}>
-        <Text style={{ fontSize: 18 }}>Deposits Today</Text>
-        <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{depositTotal} Sh</Text>
-      </Card>
+    <View style={styles.container}>
+      {/* Container with flexDirection: 'row' to align cards side by side */}
+      <View style={styles.cardsContainer}>
+        <Card style={styles.card}>
+          <Text style={{ fontSize: 18 }}>Deposits Today</Text>
+          <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{depositTotal} Sh</Text>
+        </Card>
 
-      <Card style={{ marginBottom: 20, padding: 20 }}>
-        <Text style={{ fontSize: 18 }}>Transfers Today</Text>
-        <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{transferTotal} Sh</Text>
-      </Card>
+        <Card style={styles.card}>
+          <Text style={{ fontSize: 18 }}>Transfers Today</Text>
+          <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{transferTotal} Sh</Text>
+        </Card>
+      </View>
 
       {/* Optionally, you can have a button to manually simulate a transaction */}
       <Button title="Simulate Deposit" onPress={() => receiveTransaction({ type: 'deposit', amount: 10 })} />
@@ -50,5 +53,21 @@ const TransactionCards = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  cardsContainer: {
+    flexDirection: 'row',  // Align cards side by side
+    justifyContent: 'space-between',  // Add space between the cards
+    marginBottom: 20,
+  },
+  card: {
+    flex: 1,  // Makes each card take up equal width
+    marginRight: 10,  // Space between the two cards
+    padding: 20,
+  },
+});
 
 export default TransactionCards;
