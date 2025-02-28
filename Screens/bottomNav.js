@@ -8,7 +8,7 @@ import Transactions from './Transactions'; // Import Transactions
 function BottomNav() {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'dashboard', title: 'Dashboard', icon: 'home' },
+    { key: 'dashboard', title: 'Dashboard', icon: 'view-dashboard' },
     { key: 'transactions', title: 'Transactions', icon: 'format-list-numbered' },
   ]);
 
