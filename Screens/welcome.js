@@ -14,10 +14,10 @@ function Welcome({ navigation }){
                     <Text style={styles.abtTxt}>Track your expenses effortlessly and take control of your finances. Our app helps you monitor your spending, categorize expenses, and provides insightful summaries to keep you on budget. Stay organized and make smarter financial decisions with ease!</Text>
                 </View>
                 <View style={{ height: 40 }} />
-                <Button title="SIGN UP" onPress={() => console.log('Get Started')} />
+                <Button title="SIGN UP" onPress={() => navigation.navigate('SignUp')} />
                 <View style={styles.loginLink}>
                     <Text style={styles.normalText}>Already have an account? {' '}
-                        <Text style={styles.link} onPress={() => console.log('Sign In')}>
+                        <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
                             Log-In here
                         </Text>
                     </Text>
