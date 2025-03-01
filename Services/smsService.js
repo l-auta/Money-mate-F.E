@@ -2,15 +2,23 @@ import { PermissionsAndroid } from 'react-native';
 import SmsAndroid from 'react-native-get-sms-android';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000'; // Ensure Flask is running
+const BASE_URL = 'http://10.0.2.2:5000';
 
 // Request SMS Permission
 export const requestSmsPermission = async () => {
   try {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_SMS
+    const permissions = [PermissionsAndroid.PERMISSIONS.READ_SMS];
+
+    // For Android 13+ request additional permission
+    if (Platform.Version >= 33) {
+      permissions.push(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+    }
+
+    const granted = await PermissionsAndroid.requestMultiple(permissions);
+
+    return (
+      granted[PermissionsAndroid.PERMISSIONS.READ_SMS] === PermissionsAndroid.RESULTS.GRANTED
     );
-    return granted === PermissionsAndroid.RESULTS.GRANTED;
   } catch (err) {
     console.warn('Permission Error:', err);
     return false;
@@ -27,7 +35,9 @@ export const fetchMpesaMessages = async () => {
       }),
       (fail) => console.error('Error:', fail),
       (count, smsList) => {
+        console.log(`Total messages fetched: ${count}`);
         const messages = JSON.parse(smsList);
+        console.log('Fetched Messages:', messages);
         const mpesaMessages = messages.filter((msg) =>
           msg.body.includes('M-PESA')
         );
