@@ -1,7 +1,6 @@
 {
   "expo": {
-    "newArchEnabled": true,
-    "name": "Money Mate",
+    "name": "money-mate",
     "slug": "money-mate",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +8,7 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash-icon.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "platforms": ["android", "ios", "web"],
@@ -18,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/myFavicon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/myFavicon.png"
+      "favicon": "./assets/favicon.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

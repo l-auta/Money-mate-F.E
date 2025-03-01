@@ -20,9 +20,8 @@ function Dashboard() {
 
             <View>
                 <Text style={styles.transactions}>Your Transaction Breakdown:</Text>
-                <Text style={styles.chartLine}>
-                    chart
-                </Text>
+                <Text style={styles.chartLine}>📊 Chart Placeholder</Text>
+
                  {/* render chart */}
             </View>
             <View style={{ height: 20 }} />
