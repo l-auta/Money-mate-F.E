@@ -3,7 +3,7 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BottomNav from './bottomNav';  // Import BottomNav component
 
-function MainPage() {
+function MainPage({navigation}) {
   return (
     <SafeAreaProvider>
       <BottomNav />  

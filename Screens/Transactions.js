@@ -9,6 +9,7 @@ function Transactions() {
         <View style={styles.container}>
             <Text style={styles.welcome}>Transaction Screen</Text>
         </View>
+        <TransactionList />
         </SafeAreaView>
     );
 }
