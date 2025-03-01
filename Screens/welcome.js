@@ -1,30 +1,34 @@
-import { View, Text, StyleSheet,ScrollView } from "react-native";
+import { View, Text, StyleSheet,ScrollView ,Animated} from "react-native";
+import React, {useEffect} from "react";
 import Button from "../Components/customBtn";
 
 function Welcome({ navigation }){
-    return (
-        <ScrollView>
-            
-            <View style={styles.container}>
-                <View>
-                  <Text style={styles.welcomeText}>WELCOME</Text>
-                  <Text style={styles.subWelcomeText}>ON BOARD</Text>
-                </View>
-                <View style={styles.about}>
-                    <Text style={styles.abtTxt}>Track your expenses effortlessly and take control of your finances. Our app helps you monitor your spending, categorize expenses, and provides insightful summaries to keep you on budget. Stay organized and make smarter financial decisions with ease!</Text>
-                </View>
-                <View style={{ height: 40 }} />
-                <Button title="SIGN UP" onPress={() => navigation.navigate('SignUp')} />
-                <View style={styles.loginLink}>
-                    <Text style={styles.normalText}>Already have an account? {' '}
-                        <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
-                            Log-In here
-                        </Text>
-                    </Text>
-                </View>
-            </View>
-            
-        </ScrollView>
+         // Fade-in animation for the text
+  const fadeAnim = new Animated.Value(0); // Initial opacity set to 0
+
+  useEffect(() => {
+    // Animate the text fade-in
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1500, // Time for the text to fade in
+      useNativeDriver: true,
+    }).start();
+
+    // Redirect to main app page after 2 seconds (for example)
+    const timer = setTimeout(() => {
+        navigation.replace('SignUp'); // Replace 'Main' with your main screen route name
+    }, 2500); // Duration for splash screen to show
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, [fadeAnim, navigation]);
+
+  return (
+    <View style={styles.container}>
+      <Animated.View style={{ opacity: fadeAnim }}>
+        <Text style={styles.text}>Money Mate</Text>
+        <Text style={styles.about}>Track your expenses effortlessly and take control of your finances.</Text>
+      </Animated.View>
+    </View>
     );
 }
 
@@ -35,41 +39,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // backgroundColor: '#f5cca0'
     },
-    welcomeText: {
+    text: {
         fontSize: 55,
         color: '#6d2323',
         fontWeight : 'bold',
-        marginTop: 70,
-    },
-    subWelcomeText: {
-        fontSize: 35,
-        marginBottom: 20,
-        marginLeft : 30,
-        color: '#a04747',
-        fontWeight : 'bold',
+        marginTop: 50,
+        textAlign: 'center',
     },
     about: {
-        padding: 40,
-        lineHeight: 25,
-    },
-    abtTxt: {
-        fontSize: 23,
-        color: 'black',
-        textAlign: 'justify',
-    },
-    loginLink: {
-        marginTop: 10,
-    },
-    normalText: {
-        marginTop: 10,
-        color: 'black',
-        fontSize: 19,
-    },
-    link: {
-        fontWeight: 'bold',
-        color: '#6d2323',
-        fontSize: 19,
-        textDecorationLine: 'underline',
+        fontSize: 25,
+        marginBottom: 20,
+        // marginLeft : 30,
+        color: '#a04747',
+        // fontWeight : 'bold',
     },
 })
 
