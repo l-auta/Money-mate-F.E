@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../Components/customBtn';
 
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   const [username,  setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,6 +41,7 @@ const SignUp = () => {
         alert('Passwords do not match');
         return;
     }
+    navigation.navigate('Main')
     console.log('Form Submitted with Username: ', username);
     console.log('Form Submitted with Email: ', email);
     console.log('Form Submitted with Password: ', password);
@@ -163,7 +164,7 @@ const SignUp = () => {
         <View style = {styles.register}>
             <Text style={styles.normalText}>
                 Already registered?{' '}
-                <Text style={styles.link} onPress={() => console.log('Sign In')}>
+                <Text style={styles.link} onPress={() => navigation.navigate('LogIn')}>
                 Log-in  
                 </Text>
             </Text>
